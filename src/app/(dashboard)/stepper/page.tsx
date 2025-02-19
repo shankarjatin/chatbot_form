@@ -27,22 +27,18 @@ import FormLayoutsBasic from '../form/page'  // Adjust the path as necessary
 // Vars
 const steps = [
   {
-    title: 'Account Details',
-    subtitle: 'Enter your Account Details',
+    title: 'Chatbot Configuration',
+    subtitle: 'Enter your Chatbot Details',
     description: (handleNext: (data: any) => void) => <FormLayoutsBasic handleNext={handleNext} />
   },
   {
-    title: 'Personal Info',
-    subtitle: 'Setup Information',
+    title: 'Your Chatbot',
+    subtitle: 'Configuration of bot',
     description: (formData: any) => (
      < FormDataDisplay formData={formData} />
     )
   },
-  {
-    title: 'Social Links',
-    subtitle: 'Add Social Links',
-    description: 'Jelly lollipop halvah bear claw jujubes macaroon candy canes...'
-  }
+  
 ]
 
 const StepperVerticalWithNumbers = () => {
