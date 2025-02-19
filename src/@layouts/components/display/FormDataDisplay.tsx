@@ -1,10 +1,8 @@
-// components/FormDataDisplay.tsx
+import React, { useState } from 'react'
+import { Typography, Grid, Box, Paper, IconButton } from '@mui/material'
+import { styled } from '@mui/system'
+import FileCopyIcon from '@mui/icons-material/FileCopy'
 
-import React from 'react';
-import { Typography, Button, Grid, Link, Box, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-
-// Styling for each data item
 const DataItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   margin: '8px 0',
@@ -12,75 +10,115 @@ const DataItem = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  height: '110px', // Set a consistent height for each box
-  overflow: 'hidden', // Prevent content from overflowing
-}));
+  overflow: 'hidden'
+}))
 
 const FullDetails = styled(Typography)(({ theme }) => ({
   wordWrap: 'break-word',
   marginBottom: theme.spacing(1),
   color: theme.palette.text.primary,
-}));
+  fontSize: '1.1rem' // Increased font size for better readability
+}))
 
-interface FormDataProps {
-  formData: {
-    chatbotName?: string;
-    chatbotColor?: string;
-    chatbotPosition?: string;
-    chatbotGreeting?: string;
-  };
-}
+const FormDataDisplay: React.FC = () => {
+  const [copiedText, setCopiedText] = useState<string | null>(null)
 
-const FormDataDisplay: React.FC<FormDataProps> = ({ formData }) => {
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      alert('Copied to clipboard!');
-    }, () => {
-      alert('Failed to copy!');
-    });
-  };
+    navigator.clipboard.writeText(text).then(
+      () => {
+        setCopiedText(text) // Update state to show 'Copied' message
+        setTimeout(() => setCopiedText(null), 2000) // Reset after 2 seconds
+      },
+      () => {
+        alert('Failed to copy!')
+      }
+    )
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Typography variant="h6" gutterBottom>Form Data:</Typography>
+      <Typography variant='h6' gutterBottom>
+        Chatbot Setup Instructions
+      </Typography>
       <Grid container spacing={2}>
-        {Object.entries(formData).map(([key, value]) => (
-          <Grid item xs={12} sm={6} md={4} key={key}>
-            <DataItem>
-              <Typography variant="subtitle1" gutterBottom>
-                {key.charAt(0).toUpperCase() + key.slice(1)}:
-              </Typography>
-              <FullDetails variant="body2">
-                {value}
-              </FullDetails>
-              <Button variant="outlined" onClick={() => handleCopy(value)}>
-                Copy {key.charAt(0).toUpperCase() + key.slice(1)}
-              </Button>
-            </DataItem>
-          </Grid>
-        ))}
-        <Grid item xs={12} sm={6} md={4}>
+        {/* Step 1: Copy the following files */}
+        <Grid item xs={12} sm={12} md={12}>
           <DataItem>
-            <Typography variant="subtitle1" gutterBottom>Learn More</Typography>
-            <Link href="https://example.com" target="_blank" style={{ marginBottom: 'auto' }}>
-              More details
-            </Link>
+            <Typography variant='h4' gutterBottom className='mb-4'>
+              Step 1: Copy the following files
+            </Typography>
+            <FullDetails variant='body2'>
+              CSS File (CDN link type to be pasted in header):
+              <div className='flex items-center space-x-2 my-2'>
+                <code>
+                  <pre className='m-0 p-2 rounded-md flex-1'>
+                    {`<link rel="stylesheet" href="https://example.com/your-stylesheet.css">`}
+                  </pre>
+                </code>
+                <IconButton
+                  onClick={() => handleCopy('<link rel="stylesheet" href="https://example.com/your-stylesheet.css">')}
+                >
+                  {copiedText === '<link rel="stylesheet" href="https://example.com/your-stylesheet.css">' ? 'Copied' : <FileCopyIcon />}
+                </IconButton>
+              </div>
+
+              JS File (Script to be pasted in footer):
+              <div className='flex items-center space-x-2 my-2'>
+                <code>
+                  <pre className='m-0 p-2 rounded-md flex-1'>
+                    {`<script src="https://example.com/your-script.js"></script>`}
+                  </pre>
+                </code>
+                <IconButton
+                  onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}
+                >
+                  {copiedText === '<script src="https://example.com/your-script.js"></script>' ? 'Copied' : <FileCopyIcon />}
+                </IconButton>
+              </div>
+            </FullDetails>
           </DataItem>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+
+        {/* Step 2: Paste these files in your header and footer */}
+        <Grid item xs={12} sm={12} md={12}>
           <DataItem>
-            <Typography variant="subtitle1" gutterBottom>Sample JavaScript Code</Typography>
-            <FullDetails variant="body2">
-              {`function greet() { console.log("Hello, World!"); }`}
+            <Typography variant='h4' gutterBottom className='mb-4'>
+              Step 2: Paste these files in your header and footer
+            </Typography>
+            <FullDetails variant='body2'>
+              - Paste the CSS file link inside the <code>&lt;head&gt;</code> section.
+              <br></br>
+              <br />- Paste the JS script inside the <code>&lt;footer&gt;</code> section.
             </FullDetails>
-            <Button variant="outlined" onClick={() => handleCopy(`function greet() { console.log("Hello, World!"); }`)}>
-              Copy Code
-            </Button>
+          </DataItem>
+        </Grid>
+
+        {/* Step 3: Create the div element */}
+        <Grid item xs={12} sm={12} md={12}>
+          <DataItem>
+            <Typography variant='h4' gutterBottom>
+              Step 3: Create the div element with id="OutreachChatbot"
+            </Typography>
+            <FullDetails variant='body2'>
+              Insert the following div tag where you want the chatbot to appear:
+              <div className='flex items-center space-x-2 my-2'>
+                <code>
+                  <pre className='m-0 p-2 rounded-md flex-1'>
+                    {`<div id="OutreachChatbot"></div>`}
+                  </pre>
+                </code>
+                <IconButton
+                  onClick={() => handleCopy('<div id="OutreachChatbot"></div>')}
+                >
+                  {copiedText === '<div id="OutreachChatbot"></div>' ? 'Copied' : <FileCopyIcon />}
+                </IconButton>
+              </div>
+            </FullDetails>
           </DataItem>
         </Grid>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default FormDataDisplay;
+export default FormDataDisplay
