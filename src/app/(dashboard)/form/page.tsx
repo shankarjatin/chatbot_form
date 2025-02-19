@@ -3,14 +3,10 @@
 // React Imports
 import { useState } from 'react'
 
-// Next Imports
-import Link from 'next/link'
-
 // MUI Imports
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import TextField from '@mui/material/TextField'
@@ -19,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem'
 // Components Imports
 import CustomTextField from '@core/components/mui/TextField'
 
-const FormLayoutsBasic = ({ handleNext }: { handleNext: () => void }) => {
+const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) => {
   // States
   const [chatbotName, setChatbotName] = useState('')
   const [chatbotColor, setChatbotColor] = useState('#000000')
@@ -28,13 +24,14 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: () => void }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({
+    const formData = {
       chatbotName,
       chatbotColor,
       chatbotPosition,
       chatbotGreeting
-    })
-    handleNext()
+    }
+    console.log(formData)
+    handleNext(formData)
   }
 
   return (

@@ -93,7 +93,7 @@ const StepperVerticalWithNumbers = () => {
                   </div>
                 </StepLabel>
                 <StepContent>
-                  {typeof step.description === 'function' ? step.description(handleNext) : <Typography>{step.description}</Typography>}
+                  {typeof step.description === 'function' ? step.description(index === 0 ? handleNext : formData) : <Typography>{step.description}</Typography>}
                   <div className='flex gap-4 mt-4'>
                     {typeof step.description !== 'function' && (
                       <Button variant='contained' onClick={() => handleNext()} size='small'>
