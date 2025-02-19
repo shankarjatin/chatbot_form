@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import StepContent from '@mui/material/StepContent'
 import Step from '@mui/material/Step'
+import FormDataDisplay from '@layouts/components/display/FormDataDisplay'
 
 // Third-party Imports
 import { toast } from 'react-toastify'
@@ -34,13 +35,7 @@ const steps = [
     title: 'Personal Info',
     subtitle: 'Setup Information',
     description: (formData: any) => (
-      <div>
-        <Typography variant='h6'>Form Data:</Typography>
-        <Typography>Name: {formData?.chatbotName}</Typography>
-        <Typography>Color: {formData?.chatbotColor}</Typography>
-        <Typography>Position: {formData?.chatbotPosition}</Typography>
-        <Typography>Greeting: {formData?.chatbotGreeting}</Typography>
-      </div>
+     < FormDataDisplay formData={formData} />
     )
   },
   {
