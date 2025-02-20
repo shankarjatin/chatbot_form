@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Typography, Grid, Box, Paper, IconButton } from '@mui/material'
 import { color, styled } from '@mui/system'
 import FileCopyIcon from '@mui/icons-material/FileCopy'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 const DataItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -58,10 +59,13 @@ const FormDataDisplay: React.FC = () => {
                 <IconButton
                   onClick={() => handleCopy('<link rel="stylesheet" href="https://example.com/your-stylesheet.css">')}
                 >
-                  {copiedText === '<link rel="stylesheet" href="https://example.com/your-stylesheet.css">' ? 'Copied' : <FileCopyIcon />}
+                  {copiedText === '<link rel="stylesheet" href="https://example.com/your-stylesheet.css">' ? (
+                    <CheckCircleIcon />
+                  ) : (
+                    <FileCopyIcon />
+                  )}
                 </IconButton>
               </div>
-
               JS File (Script to be pasted in footer):
               <div className='flex items-center space-x-2 my-2'>
                 <code>
@@ -69,10 +73,12 @@ const FormDataDisplay: React.FC = () => {
                     {`<script src="https://example.com/your-script.js"></script>`}
                   </pre>
                 </code>
-                <IconButton
-                  onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}
-                >
-                  {copiedText === '<script src="https://example.com/your-script.js"></script>' ? 'Copied' : <FileCopyIcon />}
+                <IconButton onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}>
+                  {copiedText === '<script src="https://example.com/your-script.js"></script>' ? (
+                    <CheckCircleIcon />
+                  ) : (
+                    <FileCopyIcon />
+                  )}
                 </IconButton>
               </div>
             </FullDetails>
@@ -86,9 +92,17 @@ const FormDataDisplay: React.FC = () => {
               Step 2: Paste these files in your header and footer
             </Typography>
             <FullDetails variant='body2'>
-              - Paste the CSS file link inside the <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>&lt;head&gt;</code> section.
+              - Paste the CSS file link inside the{' '}
+              <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
+                &lt;head&gt;
+              </code>{' '}
+              section.
               <br></br>
-              <br />- Paste the JS script inside the <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>&lt;footer&gt;</code> section.
+              <br />- Paste the JS script inside the{' '}
+              <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
+                &lt;footer&gt;
+              </code>{' '}
+              section.
             </FullDetails>
           </DataItem>
         </Grid>
@@ -102,16 +116,14 @@ const FormDataDisplay: React.FC = () => {
             <FullDetails variant='body2'>
               Insert the following div tag where you want the chatbot to appear:
               <div className='flex items-center space-x-2 my-2'>
-              <code className='text-[#7367F0]'>
-  <pre className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-    {`<div id="OutreachChatbot"></div>`}
-  </pre>
-</code>
+                <code className='text-[#7367F0]'>
+                  <pre className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
+                    {`<div id="OutreachChatbot"></div>`}
+                  </pre>
+                </code>
 
-                <IconButton
-                  onClick={() => handleCopy('<div id="OutreachChatbot"></div>')}
-                >
-                  {copiedText === '<div id="OutreachChatbot"></div>' ? 'Copied' : <FileCopyIcon />}
+                <IconButton onClick={() => handleCopy('<div id="OutreachChatbot"></div>')}>
+                  {copiedText === '<div id="OutreachChatbot"></div>' ? <CheckCircleIcon /> : <FileCopyIcon />}
                 </IconButton>
               </div>
             </FullDetails>
