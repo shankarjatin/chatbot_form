@@ -38,34 +38,11 @@ const FormDataDisplay: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Typography variant='h6' gutterBottom>
-        Chatbot Setup Instructions
-      </Typography>
       <Grid container spacing={2}>
         {/* Step 1: Copy the following files */}
         <Grid item xs={12} sm={12} md={12}>
           <DataItem>
-            <Typography variant='h5' gutterBottom className='mb-4'>
-              Step 1: Copy the following files
-            </Typography>
             <FullDetails variant='body2'>
-              CSS File (CDN link type to be pasted in header):
-              <div className='flex items-center space-x-2 my-2'>
-                <code>
-                  <pre className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-                    {`<link rel="stylesheet" href="https://example.com/your-stylesheet.css">`}
-                  </pre>
-                </code>
-                <IconButton
-                  onClick={() => handleCopy('<link rel="stylesheet" href="https://example.com/your-stylesheet.css">')}
-                >
-                  {copiedText === '<link rel="stylesheet" href="https://example.com/your-stylesheet.css">' ? (
-                    <CheckCircleIcon />
-                  ) : (
-                    <FileCopyIcon />
-                  )}
-                </IconButton>
-              </div>
               JS File (Script to be pasted in footer):
               <div className='flex items-center space-x-2 my-2'>
                 <code>
@@ -86,7 +63,7 @@ const FormDataDisplay: React.FC = () => {
         </Grid>
 
         {/* Step 2: Paste these files in your header and footer */}
-        <Grid item xs={12} sm={12} md={12}>
+        {/* <Grid item xs={12} sm={12} md={12}>
           <DataItem>
             <Typography variant='h5' gutterBottom className='mb-4'>
               Step 2: Paste these files in your header and footer
@@ -105,10 +82,10 @@ const FormDataDisplay: React.FC = () => {
               section.
             </FullDetails>
           </DataItem>
-        </Grid>
+        </Grid> */}
 
         {/* Step 3: Create the div element */}
-        <Grid item xs={12} sm={12} md={12}>
+        {/* <Grid item xs={12} sm={12} md={12}>
           <DataItem>
             <Typography variant='h5' gutterBottom>
               Step 3: Create the div element with id="OutreachChatbot"
@@ -128,7 +105,7 @@ const FormDataDisplay: React.FC = () => {
               </div>
             </FullDetails>
           </DataItem>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   )

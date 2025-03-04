@@ -9,11 +9,13 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 
 // Components Imports
 import CustomTextField from '@core/components/mui/TextField'
+import FormDataDisplay from '@/@layouts/components/display/FormDataDisplay'
 
 const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) => {
   // States
@@ -48,7 +50,7 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                 value={chatbotColor}
                 onChange={e => setChatbotColor(e.target.value)}
                 InputLabelProps={{ shrink: true }}
-                inputProps={{ style: { width: '60px', height: '60px' } }} // Adjusting the width of the color picker
+                inputProps={{ style: { width: '60px', height: '60px' } }}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -83,6 +85,15 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                 onChange={e => setChatbotGreeting(e.target.value)}
               />
             </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                label='Enter Website URL'
+                placeholder='www.yourdomain.com'
+                value={chatbotGreeting}
+                onChange={e => setChatbotGreeting(e.target.value)}
+              />
+            </Grid>
             <Grid item xs={12}>
               <div className='flex items-center justify-between flex-wrap gap-5'>
                 <Button variant='contained' type='submit'>
@@ -92,6 +103,8 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
             </Grid>
           </Grid>
         </form>
+
+        <FormDataDisplay />
       </CardContent>
     </Card>
   )
