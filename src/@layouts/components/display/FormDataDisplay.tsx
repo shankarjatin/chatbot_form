@@ -11,7 +11,8 @@ const DataItem = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  className: ''
 }))
 
 const FullDetails = styled(Typography)(({ theme }) => ({
