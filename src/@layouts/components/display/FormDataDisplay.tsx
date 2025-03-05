@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, Grid, Box, Paper, IconButton } from '@mui/material'
+import { Typography, Grid, Box, Paper, IconButton, CardHeader } from '@mui/material'
 import { color, styled } from '@mui/system'
 import FileCopyIcon from '@mui/icons-material/FileCopy'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
@@ -43,23 +43,24 @@ const FormDataDisplay: React.FC = () => {
         {/* Step 1: Copy the following files */}
         <Grid item xs={12} sm={12} md={12}>
           <DataItem>
-            <FullDetails variant='body2'>
-              JS File (Script to be pasted in footer):
-              <div className='flex items-center space-x-2 my-2'>
-                <code>
-                  <pre className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-                    {`<script src="https://example.com/your-script.js"></script>`}
-                  </pre>
-                </code>
-                <IconButton onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}>
-                  {copiedText === '<script src="https://example.com/your-script.js"></script>' ? (
-                    <CheckCircleIcon />
-                  ) : (
-                    <FileCopyIcon />
-                  )}
-                </IconButton>
-              </div>
-            </FullDetails>
+            <CardHeader title='JS File (Script to be pasted in footer):' />
+            <div className='flex items-center space-x-2 my-2 ml-4 mb-4'>
+              <code>
+                <pre
+                  className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'
+                  style={{ marginTop: '0px', marginBottom: '0px' }}
+                >
+                  {`<script src="https://example.com/your-script.js"></script>`}
+                </pre>
+              </code>
+              <IconButton onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}>
+                {copiedText === '<script src="https://example.com/your-script.js"></script>' ? (
+                  <CheckCircleIcon />
+                ) : (
+                  <FileCopyIcon />
+                )}
+              </IconButton>
+            </div>
           </DataItem>
         </Grid>
 

@@ -82,9 +82,9 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                     onChange={e => setChatbotColor(e.target.value)}
                     style={{
                       position: 'absolute',
-                      left: '8px',
-                      width: '30px',
-                      height: '30px',
+                      left: '12px',
+                      width: '24px',
+                      height: '24px',
                       border: 'none',
                       padding: '0',
                       margin: '0',
@@ -104,9 +104,9 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                   <div
                     style={{
                       position: 'absolute',
-                      left: '8px',
-                      width: '30px',
-                      height: '30px',
+                      left: '12px',
+                      width: '24px',
+                      height: '24px',
                       backgroundColor: chatbotColor,
                       borderRadius: '4px',
                       cursor: 'pointer'
@@ -136,7 +136,7 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
               <Grid item xs={12}>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                   <Button variant='contained' type='submit'>
-                    Get Started!
+                    Save
                   </Button>
                 </div>
               </Grid>
