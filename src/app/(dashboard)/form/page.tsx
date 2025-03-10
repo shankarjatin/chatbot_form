@@ -44,8 +44,8 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
         <CardHeader title='Chatbot Configuration' />
         <CardContent>
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={6}>
-              <Grid item xs={12} md={12}>
+            <Grid container spacing={3}>
+              <Grid item xs={6} md={6} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <TextField
                   fullWidth
                   label='Chatbot Name'
@@ -53,19 +53,6 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                   value={chatbotName}
                   onChange={e => setChatbotName(e.target.value)}
                 />
-              </Grid>
-              <Grid item xs={12} md={12}>
-                <TextField
-                  fullWidth
-                  label='Chatbot Greeting Message'
-                  placeholder='Enter greeting message'
-                  value={chatbotGreeting}
-                  onChange={e => setChatbotGreeting(e.target.value)}
-                  multiline
-                  rows={4} // Adjust the number of rows as needed
-                />
-              </Grid>
-              <Grid item xs={12} md={12}>
                 <TextField
                   fullWidth
                   label='Enter Website URL'
@@ -74,7 +61,21 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                   onChange={e => setWebsiteUrl(e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+
+              {/* Right Side - Greeting Message, Same Height */}
+              <Grid item xs={6} md={6}>
+                <TextField
+                  fullWidth
+                  label='Chatbot Greeting Message'
+                  placeholder='Enter greeting message'
+                  value={chatbotGreeting}
+                  onChange={e => setChatbotGreeting(e.target.value)}
+                  multiline
+                  rows={4} // Adjust height to match left side
+                />
+              </Grid>
+
+              <Grid item xs={6} md={6}>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                   <input
                     type='color'
@@ -118,7 +119,7 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                   />
                 </div>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={6} md={6}>
                 <TextField
                   fullWidth
                   select
@@ -132,7 +133,6 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
                   <MenuItem value='bottom-right'>Bottom Right</MenuItem>
                 </TextField>
               </Grid>
-
               <Grid item xs={12}>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                   <Button variant='contained' type='submit'>
