@@ -48,8 +48,8 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
               <Grid item xs={6} md={6} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <TextField
                   fullWidth
-                  label='Chatbot Name'
-                  placeholder='Enter chatbot name'
+                  label='Name'
+                  placeholder='Enter name'
                   value={chatbotName}
                   onChange={e => setChatbotName(e.target.value)}
                 />
@@ -66,8 +66,8 @@ const FormLayoutsBasic = ({ handleNext }: { handleNext: (data: any) => void }) =
               <Grid item xs={6} md={6}>
                 <TextField
                   fullWidth
-                  label='Chatbot Greeting Message'
-                  placeholder='Enter greeting message'
+                  label='Initial Message'
+                  placeholder='Enter inital message'
                   value={chatbotGreeting}
                   onChange={e => setChatbotGreeting(e.target.value)}
                   multiline

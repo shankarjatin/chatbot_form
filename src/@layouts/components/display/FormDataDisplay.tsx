@@ -1,5 +1,16 @@
 import React, { useState } from 'react'
-import { Typography, Grid, Box, Paper, IconButton, CardHeader } from '@mui/material'
+import {
+  Typography,
+  Grid,
+  Box,
+  Paper,
+  IconButton,
+  CardHeader,
+  Tooltip,
+  Card,
+  CardActions,
+  CardContent
+} from '@mui/material'
 import { color, styled } from '@mui/system'
 import FileCopyIcon from '@mui/icons-material/FileCopy'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
@@ -38,78 +49,40 @@ const FormDataDisplay: React.FC = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {/* Step 1: Copy the following files */}
-        <Grid item xs={12} sm={12} md={12}>
-          <DataItem>
-            <CardHeader title='JS File (Script to be pasted in footer):' />
-            <div className='flex items-center space-x-2 my-2 ml-4 mb-4'>
-              <code>
+    <Card sx={{ flexGrow: 1 }}>
+      <CardHeader title='Javascript file to be pasted' />
+      <CardContent className=''>
+        <Grid container spacing={2}>
+          {/* Step 1: Copy the following files */}
+          <Grid item xs={12} sm={12} md={12}>
+            <div className='flex items-center space-x-2  mb-4 '>
+              <code className='w-full bg-gray-500'>
                 <pre
-                  className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'
-                  style={{ marginTop: '0px', marginBottom: '0px' }}
+                  className='m-0 p-2 flex-1 bg-gray-500 text-gray-100 rounded-md text-md overflow-auto'
+                  style={{
+                    marginTop: '0px',
+                    marginBottom: '0px',
+                    fontFamily: 'monospace',
+                    whiteSpace: 'pre-wrap'
+                  }}
                 >
                   {`<script src="https://example.com/your-script.js"></script>`}
                 </pre>
               </code>
-              <IconButton onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}>
-                {copiedText === '<script src="https://example.com/your-script.js"></script>' ? (
-                  <CheckCircleIcon />
-                ) : (
-                  <FileCopyIcon />
-                )}
-              </IconButton>
-            </div>
-          </DataItem>
-        </Grid>
-
-        {/* Step 2: Paste these files in your header and footer */}
-        {/* <Grid item xs={12} sm={12} md={12}>
-          <DataItem>
-            <Typography variant='h5' gutterBottom className='mb-4'>
-              Step 2: Paste these files in your header and footer
-            </Typography>
-            <FullDetails variant='body2'>
-              - Paste the CSS file link inside the{' '}
-              <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-                &lt;head&gt;
-              </code>{' '}
-              section.
-              <br></br>
-              <br />- Paste the JS script inside the{' '}
-              <code className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-                &lt;footer&gt;
-              </code>{' '}
-              section.
-            </FullDetails>
-          </DataItem>
-        </Grid> */}
-
-        {/* Step 3: Create the div element */}
-        {/* <Grid item xs={12} sm={12} md={12}>
-          <DataItem>
-            <Typography variant='h5' gutterBottom>
-              Step 3: Create the div element with id="OutreachChatbot"
-            </Typography>
-            <FullDetails variant='body2'>
-              Insert the following div tag where you want the chatbot to appear:
-              <div className='flex items-center space-x-2 my-2'>
-                <code className='text-[#7367F0]'>
-                  <pre className='m-0 p-2 flex-1 bg-[#7367F0] bg-opacity-60 text-white backdrop-blur-md'>
-                    {`<div id="OutreachChatbot"></div>`}
-                  </pre>
-                </code>
-
-                <IconButton onClick={() => handleCopy('<div id="OutreachChatbot"></div>')}>
-                  {copiedText === '<div id="OutreachChatbot"></div>' ? <CheckCircleIcon /> : <FileCopyIcon />}
+              <Tooltip title='Copy'>
+                <IconButton onClick={() => handleCopy('<script src="https://example.com/your-script.js"></script>')}>
+                  {copiedText === '<script src="https://example.com/your-script.js"></script>' ? (
+                    <CheckCircleIcon />
+                  ) : (
+                    <FileCopyIcon />
+                  )}
                 </IconButton>
-              </div>
-            </FullDetails>
-          </DataItem>
-        </Grid> */}
-      </Grid>
-    </Box>
+              </Tooltip>
+            </div>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   )
 }
 
